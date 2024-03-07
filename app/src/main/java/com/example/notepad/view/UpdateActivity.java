@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.notepad.Database.DBManager;
+import com.example.notepad.MainActivity;
 import com.example.notepad.Model.Note;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -20,8 +21,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -134,7 +137,29 @@ public class UpdateActivity extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.menu_save, menu);
 
-        getMenuInflater().inflate(R.menu.menu_undo,menu);
+        getMenuInflater().inflate(R.menu.searchview,menu);
+
+        MenuItem searchItem = menu.findItem(R.id.item_search);
+
+        SearchView searchView  ;
+
+        searchView = (SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    // Xử lý tìm kiếm
+                    return true;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    // Xử lý sự thay đổi của văn bản tìm kiếm
+                    return true;
+                }
+            });
+
+
+
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -152,6 +177,7 @@ public class UpdateActivity extends AppCompatActivity {
         {
             OpenColorPickerDialog(false);
         }
+
 
         return super.onOptionsItemSelected(item);
 

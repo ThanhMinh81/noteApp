@@ -2,7 +2,6 @@
 <menu xmlns:myapp="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-
     tools:context="example.javatpoint.com.optionmenu.MainActivity">
 
     <item
